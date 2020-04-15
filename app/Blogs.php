@@ -8,7 +8,9 @@ class Blogs extends Model
 {
     protected $table = 'blog';
     protected $fillable = [
-        'title',
-        'body',
+        'title',    
+        'body',    
+        'published_at' 
     ];
+    protected $guarded = ['id'];
 }
