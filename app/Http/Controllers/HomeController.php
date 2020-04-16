@@ -32,10 +32,10 @@ class HomeController extends Controller
         return view('calories.informationform');
     }
 
-    // public function food()
-    // {
-    //     return view('calories.informationform');
-    // }
+    public function food()
+    {
+        return view('calories.informationform');
+    }
 
     public function blogdetail()
     {
