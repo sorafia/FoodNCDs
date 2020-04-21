@@ -13,26 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('home','SofiaController@index');
+Route::get( '/', function() {
+    return view( 'welcome' );
+});
 
-//Route::resource('blog','BlogController');
+// Route::get( '/home', function() {
+//     return view( 'calories.cal' );
+// })->name('home');
 
 
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('profile','HomeController@profile');
 
-Route::get('food','HomeController@food');
-//Route::get('blogdetail','SofiaController@blogdetail');
-//Route::resource('blogdetail', 'SofiaController');
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('blog', 'BlogController');

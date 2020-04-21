@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Blogs;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -13,8 +14,12 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blog =blog::get();  
-        return view('calories.blog', compact('blog'));
+        // get all the blogs
+        $blog = Blogs::all()->sortByDesc('created_at');
+		
+        // load the view and pass the user
+        return View('blog.index')
+            ->with('blog', $blog);
     }
 
     /**
@@ -46,10 +51,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        $blog = blogs::find($id); 
-        if(empty($blog))  
-	        abort(404);  
-        return view('calories.show', compact('calories'));
+        //
     }
 
     /**
