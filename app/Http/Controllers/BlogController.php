@@ -29,7 +29,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        // load the create form (resources\views\blogs)
+        return View('blog.create');
     }
 
     /**
@@ -40,7 +41,19 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string|max:150',
+            'body' => 'required|string',
+        ]);
+    
+        // store
+        $blog = new Blogs;
+        $blog->title = $request->input('title');
+        $blog->body = $request->input('body');
+        $blog->save();
+
+        // redirect
+        return redirect('blog')->with('message', 'Successfully created blog!');
     }
 
     /**
@@ -51,7 +64,12 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        // get the blog
+        $blog = Blogs::findOrFail($id);
+ 
+        // show the view and pass the blog to it
+        return View('blog.show')
+            ->with('blog', $blog);
     }
 
     /**
@@ -62,7 +80,12 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        // get the blog
+        $blog = Blogs::findOrFail($id);
+ 
+        // show the edit form and pass the blog
+        return View('blog.edit')
+            ->with('blog', $blog);
     }
 
     /**
@@ -74,7 +97,19 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string|max:150',
+            'body' => 'required|string',
+        ]);
+    
+        // store
+        $blog = Blogs::findOrFail($id);
+        $blog->title = $request->input('title');
+        $blog->body = $request->input('body');
+        $blog->save();
+
+        // redirect
+        return redirect('blog')->with('message', 'Successfully updated blog!');
     }
 
     /**
@@ -85,6 +120,11 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // delete
+        $blog = Blogs::findOrFail($id);
+        $blog->delete();
+ 
+		// redirect
+		return redirect('blog')->with('message', 'Successfully deleted the blog!');
     }
 }

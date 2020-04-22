@@ -18,13 +18,13 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">    
+    <link rel="stylesheet" href = "{{asset('css/bootstrap.min.css')}}">    
 	<!-- Site CSS -->
-    <link rel="stylesheet" href="css/style.css">    
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -39,7 +39,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="index.html">
-					<img src="images/logo.png" alt="" />
+					<img src="{{asset('images/logo.png')}}" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
@@ -48,7 +48,7 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="{{ route ('home') }}">หน้าแรก</a></li>
 						<li class="nav-item"><a class="nav-link" href="menu.html">อาหาร</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">บทความ</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ URL('/blog') }}">บทความ</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
@@ -205,16 +205,16 @@
 	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
 	<!-- ALL JS FILES -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+	<script src="{{asset('js/popper.min.js')}}"></script>
+	<script src="{{asset('js/bootstrap.min.js')}}"></script>
     <!-- ALL PLUGINS -->
-	<script src="js/jquery.superslides.min.js"></script>
-	<script src="js/images-loded.min.js"></script>
-	<script src="js/isotope.min.js"></script>
-	<script src="js/baguetteBox.min.js"></script>
-	<script src="js/form-validator.min.js"></script>
-    <script src="js/contact-form-script.js"></script>
-    <script src="js/custom.js"></script>
+	<script src="{{asset('js/jquery.superslides.min.js')}}"></script>
+	<script src="{{asset('js/images-loded.min.js')}}"></script>
+	<script src="{{asset('js/isotope.min.js')}}"></script>
+	<script src="{{asset('js/baguetteBox.min.js')}}"></script>
+	<script src="{{asset('js/form-validator.min.js')}}"></script>
+    <script src="{{asset('js/contact-form-script.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
 </body>
 </html>
