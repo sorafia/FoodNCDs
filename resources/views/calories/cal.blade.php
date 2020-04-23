@@ -74,7 +74,7 @@
 						โปรตีน
 					</p>
 					<div class="progress">
-  						<div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+  						<div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 					</div>
 					<p class="lead ">
 						คาร์โบไฮเดรต

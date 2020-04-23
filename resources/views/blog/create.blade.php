@@ -50,6 +50,7 @@
                                                 <div class="help-block with-errors"></div>
                                             </div>                                 
                                         </div>
+                                        
                                         <h3>เขียนเนื้อหา</h3>
                                         <div class="col-md-12">
                                             <div class="form-group">
@@ -63,6 +64,53 @@
 
                                                 <div class="help-block with-errors"></div>
                                             </div>
+                                        </div>
+                                        
+                                        <h3>เขียนสาเหตุ</h3>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea name="cause" id="cause" class="form-control" placeholder="สาเหตุ" required data-error="กรุณาพิมพ์สาเหตุ" ></textarea>
+                                                        
+                                                        @if ($errors->has('cause'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('cause') }}</strong>
+                                                            </span>
+                                                        @endif
+
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <h3>เขียนอาการ</h3>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea name="symptom" id="symptom" class="form-control" placeholder="อาการ" required data-error="กรุณาพิมพ์อาการ" ></textarea>
+                                                        
+                                                        @if ($errors->has('symptom'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('symptom') }}</strong>
+                                                            </span>
+                                                        @endif
+
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <h3>เขียนอาหารที่เหมาะสม</h3>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea name="eat" id="eat" class="form-control" placeholder="อาหารที่เหมาะสม" required data-error="กรุณาพิมพ์อาหารที่เหมาะสม" ></textarea>
+                                                        
+                                                        @if ($errors->has('eat'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('eat') }}</strong>
+                                                            </span>
+                                                        @endif
+
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="col-md-12">
                                             <div class="submit-button text-center">
                                                 <button class="btn btn-common" id="submit" type="submit">เพิ่ม</button>                                

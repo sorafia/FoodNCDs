@@ -9,7 +9,10 @@ class Blogs extends Model
     protected $table = 'blog';
     protected $fillable = [
         'title',    
-        'body',    
+        'body',
+        'cause',
+        'symptom',
+        'eat',    
         'published_at' 
     ];
     protected $guarded = ['id'];

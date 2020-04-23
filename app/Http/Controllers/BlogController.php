@@ -44,12 +44,18 @@ class BlogController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:150',
             'body' => 'required|string',
+            'cause' => 'required|string',
+            'symptom' => 'required|string',
+            'eat' => 'required|string',
         ]);
     
         // store
         $blog = new Blogs;
         $blog->title = $request->input('title');
         $blog->body = $request->input('body');
+        $blog->cause = $request->input('cause');
+        $blog->symptom = $request->input('symptom');
+        $blog->eat = $request->input('eat');
         $blog->save();
 
         // redirect
@@ -100,12 +106,18 @@ class BlogController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:150',
             'body' => 'required|string',
+            'cause' => 'required|string',
+            'symptom' => 'required|string',
+            'eat' => 'required|string',
         ]);
     
         // store
         $blog = Blogs::findOrFail($id);
         $blog->title = $request->input('title');
         $blog->body = $request->input('body');
+        $blog->cause = $request->input('cause');
+        $blog->symptom = $request->input('symptom');
+        $blog->eat = $request->input('eat');
         $blog->save();
 
         // redirect

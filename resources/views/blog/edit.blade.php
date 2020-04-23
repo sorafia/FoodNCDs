@@ -48,7 +48,8 @@
                                 <form id="contactForm">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h3>สร้างบทความ</h3>
+                                            
+                                            <h3>แก้ไขบทความ</h3>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" id="title" name="title" value="{{ $blog->title }}" required autofocus>
@@ -62,7 +63,8 @@
                                                     <div class="help-block with-errors"></div>
                                                 </div>                                 
                                             </div>
-                                            <h3>เขียนเนื้อหา</h3>
+                                            
+                                            <h3>แก้ไขเนื้อหา</h3>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                 <textarea name="body" id="body" class="form-control" >{{ $blog->body }}</textarea>
@@ -75,6 +77,52 @@
 
                                                     <div class="help-block with-errors"></div>
                                                 </div>
+                                            </div>
+
+                                            <h3>แก้ไขสาเหตุ</h3>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea name="cause" id="cause" class="form-control" >{{ $blog->cause }}</textarea>
+                                                        
+                                                        @if ($errors->has('cause'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('cause') }}</strong>
+                                                            </span>
+                                                        @endif
+
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <h3>แก้ไขอาการ</h3>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea name="symptom" id="symptom" class="form-control" >{{ $blog->symptom }}</textarea>
+                                                        
+                                                        @if ($errors->has('symptom'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('symptom') }}</strong>
+                                                            </span>
+                                                        @endif
+
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <h3>แก้ไขอาหารที่เหมาะสม</h3>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea name="eat" id="eat" class="form-control" >{{ $blog->eat }}</textarea>
+                                                        
+                                                        @if ($errors->has('eat'))
+                                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('eat') }}</strong>
+                                                            </span>
+                                                        @endif
+
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
                                                 
                                             <div class="form-group">
                                                 <div class="col-md-12">

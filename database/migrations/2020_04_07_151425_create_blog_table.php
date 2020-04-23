@@ -17,6 +17,9 @@ class CreateBlogTable extends Migration
             $table->increments('id');
             $table->text('title');
             $table->text('body');
+            $table->text('cause');
+            $table->text('symptom');
+            $table->text('eat');
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
         });

@@ -43,6 +43,21 @@
                     <label  class="col-sm-2">Content</label>
                     <div class="col-sm-10">{{ $blog->body }}</div>
                 </div>
+
+                <div class="row">
+                    <label  class="col-sm-2">สาเหตุ</label>
+                    <div class="col-sm-10">{{ $blog->cause }}</div>
+                </div>
+
+                <div class="row">
+                    <label  class="col-sm-2">อาการ</label>
+                    <div class="col-sm-10">{{ $blog->symptom }}</div>
+                </div>
+
+                <div class="row">
+                    <label  class="col-sm-2">อาหารที่เหมาะสม</label>
+                    <div class="col-sm-10">{{ $blog->eat }}</div>
+                </div>
             
                 <!-- /.row -->
 
