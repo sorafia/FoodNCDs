@@ -920,7 +920,10 @@ button:focus{
 	border-color: #cfa671;
 }
 .blog-box{
-	padding: 70px 0px;
+    padding: 70px 0px;
+}
+.blog-box-shot{
+	padding: 10px 0px;
 }
 .blog-box-inner{
 	position: relative;
