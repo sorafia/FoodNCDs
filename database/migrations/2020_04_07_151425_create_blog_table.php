@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class CreateBlogTable extends Migration
 {
@@ -24,7 +25,7 @@ class CreateBlogTable extends Migration
             $table->timestamp('published_at')->nullable();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

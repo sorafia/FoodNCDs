@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-xs-12 col-md-6 col-lg-6">
                         <div class="btn-group pull-right" role="group" aria-label="..." >
-                            <a href="{{ URL('/blog') }}" class="btn btn-default "> Back</a>
+                            <a href="{{ URL('/blog') }}" class="btn btn-default "> Back <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                                             <h3>แก้ไขเนื้อหา</h3>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                <textarea name="body" id="body" class="form-control" >{{ $blog->body }}</textarea>
+                                                <textarea wrap="soft|hard" name="body" id="body" class="form-control" >{{ $blog->body }}</textarea>
                                                             
                                                             @if ($errors->has('body'))
                                                                 <span class="help-block">

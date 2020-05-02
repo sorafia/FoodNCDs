@@ -47,7 +47,7 @@
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="{{ route ('home') }}">หน้าแรก</a></li>
-						<li class="nav-item"><a class="nav-link" href="menu.html">อาหาร</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ URL('/menupage') }}">อาหาร</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ URL('/blog') }}">บทความ</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>

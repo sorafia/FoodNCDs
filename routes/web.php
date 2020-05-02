@@ -30,3 +30,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('profile','HomeController@profile');
 
 Route::resource('blog', 'BlogController');
+
+Route::get('/menucreate', 'MenuController@index');
+Route::post('/addmenu', 'MenuController@store')->name('addmenu');
+Route::get('/menupage', 'MenuController@display');
+Route::get('/editmenu/{id}', 'MenuController@edit');
+Route::put('/updatemenu{id}', 'MenuController@update');
+Route::get('/deletemenu/{id}', 'MenuController@delete');
+

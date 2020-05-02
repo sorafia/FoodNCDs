@@ -8,13 +8,12 @@
 	<div id="slides" class="cover-slides">
 		<ul class="slides-container">
 			<li class="text-center">
-				<img src="images/slider-01.jpg" alt="">
+				<img src="images/slider-04.jpg" alt="">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
 							<h1 class="m-b-20"><strong>อาหารแนะนำ <br> สำหรับผู้ป่วยในกลุ่มโรค NCDs </strong></h1>
-							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
-							trends to see any changes in performance over time.</p>
+							<p class="m-b-40">เว็บแอปพลิเคชันแนะนำอาหารสำหรับผู้ป่วยในกลุ่มโรค NCDs </p>
 							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">อาหารแนะนำ</a></p>
 						</div>
 					</div>
@@ -26,8 +25,7 @@
 					<div class="row">
 						<div class="col-md-12">
 						<h1 class="m-b-20"><strong>Recommended food <br> for  NCDs patients</strong></h1>
-							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
-							trends to see any changes in performance over time.</p>
+							<p class="m-b-40">Web application for Recommended food for  NCDs patients</p>
 							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Recommended food</a></p>
 						</div>
 					</div>
@@ -39,8 +37,7 @@
 					<div class="row">
 						<div class="col-md-12">
 						<h1 class="m-b-20"><strong>อาหารแนะนำ <br> สำหรับผู้ป่วยในกลุ่มโรค NCDs </strong></h1>
-							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
-							trends to see any changes in performance over time.</p>
+							<p class="m-b-40">เว็บแอปพลิเคชันแนะนำอาหารสำหรับผู้ป่วยในกลุ่มโรค NCDs </p>
 							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">อาหารแนะนำ</a></p>
 						</div>
 					</div>
@@ -130,10 +127,10 @@
 				<div class="col-lg-12">
 					<div class="special-menu text-center">
 						<div class="button-group filter-button-group">
-							<button class="active" data-filter="*">All</button>
-							<button data-filter=".drinks">Drinks</button>
-							<button data-filter=".lunch">Lunch</button>
-							<button data-filter=".dinner">Dinner</button>
+							<button class="active" data-filter="*">เมนูทั้งหมด</button>
+							<button data-filter=".breakfast">อาหารเช้า</button>
+							<button data-filter=".lunch">อาหารกลางวัน</button>
+							<button data-filter=".dinner">อาหารเย็น</button>
 						</div>
 					</div>
 				</div>
@@ -144,9 +141,13 @@
 					<div class="gallery-single fix">
 						<img src="images/img-01.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Drinks 1</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $7.79</h5>
+						<h4>ข้าวราดต้มจืดเต้าหู้หมูสับ</h4>
+							<p></p>
+							<h3> น้ำหนัก/จาน (กรัม) &nbsp; 473.0</h3>
+							<h3> พลังงาน (kcal)   &nbsp; 263.0</h3>
+							<h3> โปรตีน (กรัม)      &nbsp; 21.2</h3>
+							<h3> ไขมัน (กรัม)     &nbsp;   8.7</h3>
+							<h3> คาร์โบไฮเดรต (กรัม) &nbsp;25.0</h3>
 						</div>
 					</div>
 				</div>
@@ -155,9 +156,13 @@
 					<div class="gallery-single fix">
 						<img src="images/img-02.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Drinks 2</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $9.79</h5>
+						<h4>ข้าวราดไข่เจียวสมุนไพร</h4>
+							<p></p>
+							<h3> น้ำหนัก/จาน (กรัม)   276.0</h3>
+							<h3> พลังงาน (kcal)     579.0</h3>
+							<h3> โปรตีน (กรัม)       14.0</h3>
+							<h3> ไขมัน (กรัม)        27.9</h3>
+							<h3> คาร์โบไฮเดรต (กรัม) 68.0</h3>
 						</div>
 					</div>
 				</div>
@@ -166,9 +171,13 @@
 					<div class="gallery-single fix">
 						<img src="images/img-03.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Drinks 3</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $10.79</h5>
+						<h4>ข้าวราดแกงส้มชะอมทอด</h4>
+							<p></p>
+							<h3> น้ำหนัก/จาน (กรัม)   370.0</h3>
+							<h3> พลังงาน (kcal)     397.0</h3>
+							<h3> โปรตีน (กรัม)       13.9</h3>
+							<h3> ไขมัน (กรัม)        12.7</h3>
+							<h3> คาร์โบไฮเดรต (กรัม) 56.6</h3>
 						</div>
 					</div>
 				</div>
@@ -177,9 +186,13 @@
 					<div class="gallery-single fix">
 						<img src="images/img-04.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Lunch 1</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $15.79</h5>
+						<h4>ข้าวราดผัดผักรวม</h4>
+							<p></p>
+							<h3> น้ำหนัก/จาน (กรัม)   282.0</h3>
+							<h3> พลังงาน (kcal)     332.0</h3>
+							<h3> โปรตีน (กรัม)       8.8</h3>
+							<h3> ไขมัน (กรัม)        5.9</h3>
+							<h3> คาร์โบไฮเดรต (กรัม) 60.9</h3>
 						</div>
 					</div>
 				</div>
@@ -188,9 +201,13 @@
 					<div class="gallery-single fix">
 						<img src="images/img-05.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Lunch 2</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $18.79</h5>
+						<h4>ข้าวราดยำไข่ดาว</h4>
+							<p></p>
+							<h3> น้ำหนัก/จาน (กรัม)   366.0</h3>
+							<h3> พลังงาน (kcal)     638.0</h3>
+							<h3> โปรตีน (กรัม)       19.9</h3>
+							<h3> ไขมัน (กรัม)        28.5</h3>
+							<h3> คาร์โบไฮเดรต (กรัม) 75.3</h3>
 						</div>
 					</div>
 				</div>
@@ -199,9 +216,13 @@
 					<div class="gallery-single fix">
 						<img src="images/img-06.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Lunch 3</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $20.79</h5>
+						<h4>น้ำพริกกะปิ+ปลาทูทอด+ชะอมชุบไข่</h4>
+							<p></p>
+							<h3> น้ำหนัก/จาน (กรัม)   331.0</h3>
+							<h3> พลังงาน (kcal)     386.0</h3>
+							<h3> โปรตีน (กรัม)       32.8</h3>
+							<h3> ไขมัน (กรัม)        24.5</h3>
+							<h3> คาร์โบไฮเดรต (กรัม) 8.5</h3>
 						</div>
 					</div>
 				</div>
@@ -210,9 +231,13 @@
 					<div class="gallery-single fix">
 						<img src="images/img-07.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Dinner 1</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $25.79</h5>
+						<h4>ก๋วยเตี๋ยวเส้นหมี่เนื้อรวมน้ำตก</h4>
+							<p></p>
+							<h3> น้ำหนัก/จาน (กรัม)   365.0</h3>
+							<h3> พลังงาน (kcal)     233.0</h3>
+							<h3> โปรตีน (กรัม)       19.1</h3>
+							<h3> ไขมัน (กรัม)        2.5</h3>
+							<h3> คาร์โบไฮเดรต (กรัม) 334.0</h3>
 						</div>
 					</div>
 				</div>
@@ -221,9 +246,13 @@
 					<div class="gallery-single fix">
 						<img src="images/img-08.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Dinner 2</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $22.79</h5>
+						<h4>กระเพาะปลาเส้นหมี่</h4>
+							<p></p>
+							<h3> น้ำหนัก/จาน (กรัม)   412.0</h3>
+							<h3> พลังงาน (kcal)     246.0</h3>
+							<h3> โปรตีน (กรัม)       15.5</h3>
+							<h3> ไขมัน (กรัม)        3.1</h3>
+							<h3> คาร์โบไฮเดรต (กรัม) 39.0</h3>
 						</div>
 					</div>
 				</div>
@@ -232,9 +261,13 @@
 					<div class="gallery-single fix">
 						<img src="images/img-09.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Dinner 3</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $24.79</h5>
+						<h4>สุกี้รวมมิตร แห้ง</h4>
+							<p></p>
+							<h3> น้ำหนัก/จาน (กรัม)   384.0</h3>
+							<h3> พลังงาน (kcal)     399.0</h3>
+							<h3> โปรตีน (กรัม)       21.9</h3>
+							<h3> ไขมัน (กรัม)        17.0</h3>
+							<h3> คาร์โบไฮเดรต (กรัม) 39.4</h3>
 						</div>
 					</div>
 				</div>

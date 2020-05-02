@@ -54,7 +54,7 @@
                                         <h3>เขียนเนื้อหา</h3>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea name="body" id="body" class="form-control" placeholder="เนื้อหา" required data-error="กรุณาพิมพ์เนื้อหา" ></textarea>
+                                                <textarea wrap="soft|hard" name="body" id="body" class="form-control" placeholder="เนื้อหา" required data-error="กรุณาพิมพ์เนื้อหา" ></textarea>
                                                         
                                                         @if ($errors->has('body'))
                                                             <span class="help-block">
