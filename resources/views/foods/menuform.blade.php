@@ -29,7 +29,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-12">
 							<h3>ชื่ออาหาร : {{$menu->name}}</h3>
-							<img src="{{asset('upload/food/'. $menu->image )}}" width="340 px;" height="290 px;" alt="image" >
+							<img src="{{asset('upload/food/'. $menu->image )}}" class="img-fluid" width="340 px;" height="290 px;" alt="image" >
 						</div>
 						
 						<div class="col-lg-6 col-md-6 col-sm-12 text-left">

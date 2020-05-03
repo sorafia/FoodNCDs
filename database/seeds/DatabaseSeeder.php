@@ -14,6 +14,10 @@ class DatabaseSeeder extends Seeder
         $this->call([RolesSeeder::class,
             UsersSeeder::class,
             BlogSeeder::class,
-            MenusSeeder::class,]);
+            MenusSeeder::class,
+            GendersSeeder::class,
+            ExercisebehaviorsSeeder::class,
+            FoodallergiesSeeder::class,
+            NcdsSeeder::class,]);
     }
 }
