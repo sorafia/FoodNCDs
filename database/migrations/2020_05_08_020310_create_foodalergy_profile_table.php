@@ -3,9 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\QueryException;
 
-class CreateProfilesTable extends Migration
+class CreateFoodalergyProfileTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +13,10 @@ class CreateProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('foodallergy_profile', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->integer('height');
-            $table->integer('weight');
-            $table->integer('age');
+            $table->integer('profile_id')->unsigned()->nullable();
+            $table->integer('foodallergy_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('foodallergy_profile');
     }
 }

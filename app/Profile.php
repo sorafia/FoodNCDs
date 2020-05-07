@@ -25,18 +25,18 @@ class Profile extends Model
             ->withTimestamps();
     }
 
-    // public function getNcdListAttribute(){
-    //     return $this->ncds->pluck('id');
-    // }
+    public function getNcdListAttribute(){
+        return $this->ncds->pluck('id');
+    }
 
     public function foodallergies(){
         return $this->belongsToMany('App\Foodallergy')
             ->withTimestamps();
     }
 
-    // public function getFoodallergyListAttribute(){
-    //     return $this->foodallergies->pluck('id');
-    // }
+    public function getFoodallergyListAttribute(){
+        return $this->foodallergies->pluck('id');
+    }
 
     public function gender(){
         return $this->belongsTo('App\Gender');

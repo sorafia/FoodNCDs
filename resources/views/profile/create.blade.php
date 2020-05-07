@@ -22,21 +22,36 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
-						<h2>โปรไฟล์</h2>
+						<h2>สร้างโปรไฟล์ของฉัน</h2>
 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
 					</div>
-				</div>
-			</div>
-			<div class="row">
+					
+					<div class="row">
 						<div class="col-lg-12 col-sm-12 col-xs-12">
 							<div class="contact-block">
-								
+								<form method="POST" action="{{ URL('/profile') }}">
 								<!-- if there are creation errors, they will show here -->
+								
+									@if($errors->all())
+									<ul class="has-error">
+									@foreach ($errors->all() as $message)
+										<li>{{ $message }}</li>
+									@endforeach
+									</ul>
+									@endif
+								
+										{{ csrf_field() }}
+										
 									<div class="row">
 										<div class="col-md-6">
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control" id="firstname" name="firstname" placeholder="ชื่อ" required autofocus>														
+													<input type="text" class="form-control" id="firstname" name="firstname" placeholder="ชื่อ" value="{{ old('firstname') }}" required autofocus>
+														@if ($errors->has('firstname'))
+															<span class="help-block">
+																<strong>{{ $errors->first('firstname') }}</strong>
+															</span>
+														@endif
 													<div class="help-block with-errors"></div>
 												</div>
 											</div>
@@ -45,6 +60,11 @@
 											<div class="col-md-12">
 												<div class="form-group">	
 													<input type="text" class="form-control" id="lastname" name="lastname" placeholder="นามสกุล" required data-error="กรุณากรอกนามสกุลของท่าน">
+														@if ($errors->has('lastname'))
+															<span class="help-block">
+																<strong>{{ $errors->first('lastname') }}</strong>
+															</span>
+														@endif
 													<div class="help-block with-errors"></div>
 												</div>
 											</div>
@@ -56,7 +76,7 @@
 											<h3>ข้อมูลส่วนตัว</h3>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="int" class="form-control" id="weight" name="weight" placeholder="น้ำหนัก" required data-error="กรุณากรอกน้ำหนักของท่าน">
+													<input type="text" class="form-control" id="weight" name="weight" placeholder="น้ำหนัก" required data-error="กรุณากรอกน้ำหนักของท่าน">
 													<div class="help-block with-errors"></div>
 												</div>                                 
 											</div>
@@ -68,10 +88,10 @@
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<select class="custom-select d-block form-control" id="sex" required data-error="กรุณาเลือเพศของท่าน">
+													<select class="custom-select d-block form-control" name="gender_id" required data-error="กรุณาเลือเพศของท่าน">
 													<option disabled selected>เพศ</option>
-													<option value="male">ชาย</option>
-													<option value="female">หญิง</option>
+													<option value="1">ชาย</option>
+													<option value="2">หญิง</option>
 													</select>
 													<div class="help-block with-errors"></div>
 												</div> 
@@ -85,7 +105,7 @@
 											<h3>ข้อมูลพฤติกรรมในการออกกำลังกาย</h3>
 											<div class="col-md-12">
 												<div class="form-group">
-													<select class="custom-select d-block form-control" id="exercise" required data-error="กรุณาเลือกความถี่ในการออกกำลังกายของท่าน">
+													<select class="custom-select d-block form-control" name="exercisebehavior_id" required data-error="กรุณาเลือกความถี่ในการออกกำลังกายของท่าน">
 													<option disabled selected>การออกกำลังกาย</option>
 													<option value="1">น้อยมากหรือไม่ออกเลย</option>
 													<option value="2">1-3 ครั้ง</option>
@@ -99,101 +119,103 @@
 										</div>
 										
 										<div class="col-md-6">
-											<h3>ประวัติข้อมูลโรคประจำตัว</h3>
+										<h3>ประวัติข้อมูลโรคประจำตัว</h3>
 											<div class="col-md-12">
 												<div class="form-check">
-													<input class="form-check-input" type="checkbox" name="disease" value="โรคหัวใจ">
-													<label class="form-check-label" for="disease">โรคหัวใจ</label>
+													<input class="form-check-input" type="checkbox" name="ncd_list[]" value="1">
+													<label class="form-check-label">โรคไต</label>																										
 												</div>
 											</div>
 											<div class="col-md-12">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="โรคไต" id="disease">
-													<label class="form-check-label" for="disease">โรคไต</label>
+												<div class="form-check">												
+													<input class="form-check-input" type="checkbox" name="ncd_list[]" value="2">
+													<label class="form-check-label">โรคเบาหวาน</label>														
+												</div>
+											</div>												
+											<div class="col-md-12">
+												<div class="form-check">												
+													<input class="form-check-input" type="checkbox" name="ncd_list[]" value="3">
+													<label class="form-check-label">โรคไขมันในเส้นเลือด</label>													
 												</div>
 											</div>
 											<div class="col-md-12">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="โรคกระดูกพรุน" id="disease">
-													<label class="form-check-label" for="disease">โรคกระดูกพรุน</label>
+												<div class="form-check">												
+													<input class="form-check-input" type="checkbox" name="ncd_list[]" value="4">
+													<label class="form-check-label">โรคหัวใจ</label>													
 												</div>
 											</div>
 											<div class="col-md-12">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="โรคไขมันในเส้นเลือด" id="disease">
-													<label class="form-check-label" for="disease">โรคไขมันในเส้นเลือด</label>
+												<div class="form-check">												
+													<input class="form-check-input" type="checkbox" name="ncd_list[]" value="5">
+													<label class="form-check-label">โรคความดันโลหิตสูง</label>
 												</div>
 											</div>
 											<div class="col-md-12">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="โรคความดันโลหิตสูง" id="disease">
-													<label class="form-check-label" for="disease">โรคความดันโลหิตสูง</label>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="โรคเบาหวาน" id="disease">
-													<label class="form-check-label" for="disease">โรคเบาหวาน</label>
+												<div class="form-check">																
+													<input class="form-check-input" type="checkbox" name="ncd_list[]" value="6">
+													<label class="form-check-label">โรคกระดูกพรุน</label>
 												</div>
 											</div>
 											<p> </p>
 											<h3>ประวัติข้อมูลส่วนผสมที่แพ้</h3>
 											<div class="col-md-12">
 												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="ไข่" id="ingredient">
-													<label class="form-check-label" for="disease">ไข่</label>
+													<input class="form-check-input" type="checkbox" name="foodallergy_list[]" value="1">
+													<label class="form-check-label">ไข่</label>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="ถั่ว" id="ingredient">
-													<label class="form-check-label" for="disease">ถั่ว</label>
+													<input class="form-check-input" type="checkbox" name="foodallergy_list[]" value="2">
+													<label class="form-check-label">ถั่ว</label>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="ถั่วลิสง" id="ingredient">
-													<label class="form-check-label" for="disease">ถั่วลิสง</label>
+													<input class="form-check-input" type="checkbox" name="foodallergy_list[]" value="3">
+													<label class="form-check-label">ถั่วลิสง</label>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="กุ้ง" id="ingredient">
-													<label class="form-check-label" for="disease">กุ้ง</label>
+													<input class="form-check-input" type="checkbox" name="foodallergy_list[]" value="4">
+													<label class="form-check-label">กุ้ง</label>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="ปู" id="ingredient">
-													<label class="form-check-label" for="disease">ปู</label>
+													<input class="form-check-input" type="checkbox" name="foodallergy_list[]" value="5">
+													<label class="form-check-label">ปู</label>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="ปลา" id="ingredient">
-													<label class="form-check-label" for="disease">ปลา</label>
+													<input class="form-check-input" type="checkbox" name="foodallergy_list[]" value="6">
+													<label class="form-check-label">ปลา</label>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="ถั่วเหลือง" id="ingredient">
-													<label class="form-check-label" for="disease">ถั่วเหลือง</label>
+													<input class="form-check-input" type="checkbox" name="foodallergy_list[]" value="7">
+													<label class="form-check-label">ถั่วเหลือง</label>
 												</div>
 											</div>
 										</div>
 										<div class="col-md-12">
 											<div class="submit-button text-center">
-												<p><a class="btn btn-common" href="{{ URL('/profilepage') }}">บันทึก</a></p>
-												<!-- <button class="btn btn-common" href="{{ URL('/profilepage') }}">บันทึก</button>
+												<button class="btn btn-common" id="submit" type="submit">บันทึก</button>
 												<div id="msgSubmit" class="h3 text-center hidden"></div> 
-												<div class="clearfix"></div>  -->
+												<div class="clearfix"></div> 
 											</div>
 										</div>
 									</div>
-								
+								</form>
 							</div>
 						</div>
 					</div>
+						
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- End Reservation -->

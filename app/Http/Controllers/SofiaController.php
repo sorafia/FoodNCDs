@@ -7,12 +7,12 @@ class SofiaController extends Controller
 {
     // public function index()
     // {
-    //     return view('calories.cal');
+    //     return view('uipage.homepage');
     // }
     
     // public function profile()
     // {
-    //     return view('calories.informationform');
+    //     return view('uipage.profilepage');
     // }
 
     // public function food()

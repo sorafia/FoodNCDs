@@ -18,6 +18,12 @@
 
    <div class="container">
         <div class="reservation-box">    
+            <div class="blog-search-form">
+                <input name="search" placeholder="Search blog" type="text">
+                <button class="search-btn">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
  
             <!--<div class="row">
                 @foreach($blog as $key => $value)
@@ -54,7 +60,7 @@
             <div class="row">
                 @foreach($blog as $key => $value)
                     
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="card-body"style="margin-bottom: 30px;margin-top: 30px; border: 1px solid #e1e2e2;;height: auto; box-shadow: 0 0 1px black;">
                             <h4 class="card-title" style="font-size: 18px; font-weight: 500; color: #222222;margin-bottom: 0px; text-align: center; ">{{ $value->title }}</h4>
                             

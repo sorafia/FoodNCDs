@@ -49,20 +49,26 @@
 						<li class="nav-item active"><a class="nav-link" href="{{ route ('homepage') }}">หน้าแรก</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ URL('/menupage') }}">อาหาร</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ URL('/blog') }}">บทความ</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{ URL('/gallerypage') }}">Gallery</a></li>						
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="reservation.html">Reservation</a>
+								<a class="dropdown-item" href="stuff.html">Stuff</a>
+								<a class="dropdown-item" href="gallery.html">Gallery</a>
+							</div>
+						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">โปรไฟล์</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="{{ URL('/profile') }}">โปรไฟล์ของฉัน</a>
-								<a class="dropdown-item" href="{{ URL('/profilepage') }}">โปรไฟล์ของฉัน(หลอก)</a>
-								<a class="dropdown-item" href="{{action('HomeController@profile')}}">แก้ไขโปรไฟล์(หลอก)</a>
+								<a class="dropdown-item" href="{{ URL('/profilepage) }}">โปรไฟล์ของฉัน</a>
+								<a class="dropdown-item" href="">แก้ไขโปรไฟล์</a>
 							</div>
-						</li>						
-										<!-- Authentication Links -->
-										{{--@if(Auth::check())--}}
+						</li>
+						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        {{--@if(Auth::check())--}}
 								@guest
 									<li class="nav-item">
-										<a class="nav-link" href="{{ url('/login') }}"><i class="fa fa-sign-in-alt"></i>  Login</a>
+										<a class="nav-link" href="{{ url('/login') }}"><i class="fa fa-user-plus"></i>  Login</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="{{ route('register') }}"><i class="fa fa-user-plus"></i> Register</a>

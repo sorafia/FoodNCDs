@@ -25,11 +25,13 @@ Route::get( '/', function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('profile','HomeController@profile');
+Route::get('profiless','HomeController@profile');
 
 Route::resource('blog', 'BlogController');
+
+Route::resource('profile', 'ProfileController');
 
 Route::get('/menucreate', 'MenuController@index');
 Route::post('/addmenu', 'MenuController@store')->name('addmenu');
@@ -38,3 +40,6 @@ Route::get('/editmenu/{id}', 'MenuController@edit');
 Route::put('/updatemenu{id}', 'MenuController@update');
 Route::get('/deletemenu/{id}', 'MenuController@delete');
 
+Route::get('/homepage','BlogController@firsthome')->name('homepage');
+Route::get('/profilepage','BlogController@profile');
+Route::get('/gallerypage','BlogController@gallery');

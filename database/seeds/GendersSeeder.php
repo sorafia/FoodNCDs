@@ -14,11 +14,11 @@ class GendersSeeder extends Seeder
     public function run()
     {
         DB::table('genders')->insert([
-            ['name' => 'Male',
+            ['name' => 'ชาย',
                 'slug' => 'M',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
-            ['name' => 'Female',
+            ['name' => 'หญิง',
                 'slug' => 'F',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
