@@ -22,18 +22,18 @@ class BlogController extends Controller
             ->with('blog', $blog);
     }
 
-    public function profile()
-    {
-        return view('uipage.profilepage');
-    }
-    public function firsthome()
-    {
-        return view('uipage.homepage');
-    }
-    public function gallery()
-    {
-        return view('uipage.gallerypage');
-    }
+    // public function profile()
+    // {
+    //     return view('uipage.profilepage');
+    // }
+    // public function firsthome()
+    // {
+    //     return view('uipage.homepage');
+    // }
+    // public function gallery()
+    // {
+    //     return view('uipage.gallerypage');
+    //}
 
     /**
      * Show the form for creating a new resource.

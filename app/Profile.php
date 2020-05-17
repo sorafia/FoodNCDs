@@ -51,11 +51,4 @@ class Profile extends Model
         return $this->belongsTo('App\Exercisebehavior');
     }
 
-    protected $appends = ['bmr'];
-
-public function getBmrAttribute()
-{
-    return $this->null; 
-}
-
 }

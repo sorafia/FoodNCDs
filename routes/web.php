@@ -25,9 +25,7 @@ Route::get( '/', function() {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('profiless','HomeController@profile');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('blog', 'BlogController');
 
@@ -40,22 +38,7 @@ Route::get('/editmenu/{id}', 'MenuController@edit');
 Route::put('/updatemenu{id}', 'MenuController@update');
 Route::get('/deletemenu/{id}', 'MenuController@delete');
 
-Route::get('/homepage','BlogController@firsthome')->name('homepage');
-Route::get('/profilepage','BlogController@profile');
-Route::get('/gallerypage','BlogController@gallery');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/homepage','BlogController@firsthome')->name('homepage');
+// Route::get('/profilepage','BlogController@profile');
+// Route::get('/gallerypage','BlogController@gallery');
+//Route::get('profiless','HomeController@profile');

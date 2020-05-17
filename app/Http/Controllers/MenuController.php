@@ -13,6 +13,7 @@ use Log;
 
 class MenuController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -25,44 +26,50 @@ class MenuController extends Controller
 
     public function display()
     {
+        //เรียกเมนูใน database ทั้งหมด
         $menus = Menu::all();       
         
 
-
+        //เป็นการหา id user ของแต่ละคน
         $person = Auth::user();
         $profile = Profile::where('user_id', $person->id)->first();
+
+        //เป็นการคำนวณค่า BMR โดยเรียกมาจาก function calculate
         $bmr = $this->calculate($profile->weight, $profile->height, $profile->age, $profile->gender->id);
         Log::info('$profile : '.$profile);
 
 
-
+        //หาว่า user มีส่วนผสมที่แพ้
         $foodallergy_profile = Foodallergy_Profile::where('profile_id', $profile->id)->get();
         Log::info('$foodallergy_profile : '.$foodallergy_profile);
 
-        //filter foodlergy
+        //filter foodallergy
         $foodWithOutFoodlergy= [];
         for ($i = 0; $i < count($menus); $i++) {
             Log::info('listmenu : '.$menus[$i]);
 
-            if( ($foodallergy_profile->foodallergy_id = 1 && $menus[$i]->egg == 'not have') ||
-                ($foodallergy_profile->foodallergy_id = 2 && $menus[$i]->nuts == 'not have') ||
-                ($foodallergy_profile->foodallergy_id = 3 && $menus[$i]->peanuts == 'not have') ||
-                ($foodallergy_profile->foodallergy_id = 4 && $menus[$i]->soy == 'not have') ||
-                ($foodallergy_profile->foodallergy_id = 5 && $menus[$i]->shrimps == 'not have') ||
-                ($foodallergy_profile->foodallergy_id = 6 && $menus[$i]->crab == 'not have') || 
+            if( ($foodallergy_profile->foodallergy_id = 1 && $menus[$i]->egg == 'not have') &&
+                ($foodallergy_profile->foodallergy_id = 2 && $menus[$i]->nuts == 'not have') &&
+                ($foodallergy_profile->foodallergy_id = 3 && $menus[$i]->peanuts == 'not have') &&
+                ($foodallergy_profile->foodallergy_id = 4 && $menus[$i]->soy == 'not have') &&
+                ($foodallergy_profile->foodallergy_id = 5 && $menus[$i]->shrimps == 'not have') &&
+                ($foodallergy_profile->foodallergy_id = 6 && $menus[$i]->crab == 'not have') &&
                 ($foodallergy_profile->foodallergy_id = 7 && $menus[$i]->fish == 'not have') ){
                 array_push($foodWithOutFoodlergy, $menus[$i]);
             }
         }
 
+        //เป็นการเรียกดูว่า array foodallergy มีอะไรบ้าง
         for ($i = 0; $i < count($foodWithOutFoodlergy); $i++) {
             Log::info('$foodWithOutFoodlergy : '.$foodWithOutFoodlergy[$i]);
         }
 
 
-        //cal Nutrients
+        //เรียกดูว่า user มีโรคประจำตัวอะไร
 
         $ncd_profile = Ncd_Profile::where('profile_id', $profile->id)->get();
+        
+        //คำนวณสารอาหารของแต่ละบุคคลที่มีโรคประจำตัว
         $protein = 0;
         $carb = 0;
         $lipid = 0;
@@ -70,26 +77,30 @@ class MenuController extends Controller
         for ($i = 0; $i < count($ncd_profile); $i++) {
             Log::info('$ncd_profile: '.$ncd_profile[$i]);
 
+            if($ncd_profile[$i]->ncd_id = 3){
+                $lipid = 29 /100 * $bmr / 9;
+            }
+            if($ncd_profile[$i]->ncd_id = 4){
+                $lipid = 29 /100 * $bmr / 9;
+            }
             if($ncd_profile[$i]->ncd_id = 1){
-                // $protein = 15 /100 * $bmr;
-                // $carb = 60 /100 * $bmr;
-                // $lipid = 30 /100 * $bmr;
-                // $sodium = 
+                $protein = $profile->weight; 
+                $sodium = 3;
             }
-
             if($ncd_profile[$i]->ncd_id = 2){
-                // $protein = 15 /100 * $bmr;
-                // $carb = 60 /100 * $bmr;
-                // $lipid= 30 /100 * $bmr;
+                $protein = 20 /100 * $bmr / 4;
+                $carb = 60 /100 * $bmr / 4;
+                $lipid= 20 /100 * $bmr / 9;
             }
-
             if($ncd_profile[$i]->ncd_id = 5){
-                $protein = 15 /100 * $bmr;
-                $carb = 60 /100 * $bmr;
-                $lipid= 30 /100 * $bmr;
+                $protein = 15 /100 * $bmr / 4;
+                $carb =  55/100 * $bmr / 4;
+                $lipid= 30 /100 * $bmr / 9;
             }
+            
         }
 
+        //เก็บเมนูอาหารที่ user ทานได้เป็น array โดยปราศจากส่วนผสมที่ user แพ้ 
         $displaymenu = [];
         $sumprotein = 0.0;
         $sumcarb = 0.0;
@@ -98,25 +109,59 @@ class MenuController extends Controller
         shuffle($foodWithOutFoodlergy);
         for ($i = 0; $i < 3; $i++) {
             $sumprotein+=$foodWithOutFoodlergy[$i]->protein;
+            $sumcarb+=$foodWithOutFoodlergy[$i]->carbohydrate;
+            $sumlipid+=$foodWithOutFoodlergy[$i]->lipid;
+            $sumsodium+=$foodWithOutFoodlergy[$i]->sodium;
             array_push($displaymenu, $foodWithOutFoodlergy[$i]);
-        }
-        Log::info('$sumprotein : '.$sumprotein);
-        Log::info('$protein : '.$protein);
+
+        }     
 
 
-        
-        while($sumprotein > $protein && $sumcarb > $carb){
+        //เช็ค sum ของสารอาหาร
+        while($sumprotein > $protein && $sumcarb > $carb && $sumlipid > $lipid && $sumsodium > $sodium){
         $sumprotein = 0.0;
+        $sumcarbohydrate = 0.0;
+        $sumlipid = 0.0;
+        $sumsodium = 0.0;
         $displaymenu = [];
         shuffle($foodWithOutFoodlergy);
-        for ($i = 0; $i < 3; $i++) {
-            $sumprotein+=$foodWithOutFoodlergy[$i]->protein;
-            array_push($displaymenu, $foodWithOutFoodlergy[$i]);
+        
+
+        //เช็คว่ามีเมนูที่สามารถทานได้หรือไม่
+        if(count($foodWithOutFoodlergy) == 0 ){
+            $displaymenu = [];
+        }else if(count($foodWithOutFoodlergy) < 3 ){
+            for ($i = 0; $i < count($foodWithOutFoodlergy); $i++) {
+                $sumprotein+=$foodWithOutFoodlergy[$i]->protein;
+                $sumcarb+=$foodWithOutFoodlergy[$i]->carbohydrate;
+                $sumlipid+=$foodWithOutFoodlergy[$i]->lipid;
+                $sumsodium+=$foodWithOutFoodlergy[$i]->sodium;            
+                array_push($displaymenu, $foodWithOutFoodlergy[$i]);
+            }
+        }else{
+
+            for ($i = 0; $i < 3; $i++) {
+                $sumprotein+=$foodWithOutFoodlergy[$i]->protein;
+                $sumcarb+=$foodWithOutFoodlergy[$i]->carbohydrate;
+                $sumlipid+=$foodWithOutFoodlergy[$i]->lipid;
+                $sumsodium+=$foodWithOutFoodlergy[$i]->sodium;            
+                array_push($displaymenu, $foodWithOutFoodlergy[$i]);
+            }
+
+        }       
+
         }
 
+        
 
-
-        }
+        Log::info('$sumprotein : '.$sumprotein);
+        Log::info('$protein : '.$protein);
+        Log::info('$sumcarb : '.$sumcarb);
+        Log::info('$carb : '.$carb);
+        Log::info('$sumlipid : '.$sumlipid);
+        Log::info('$lipid : '.$lipid);
+        Log::info('$sumsodium : '.$sumsodium);
+        Log::info('$sodium : '.$sodium);
 
         for ($i = 0; $i < count($displaymenu); $i++) {
             Log::info('$displaymenu : '.$displaymenu[$i]);
@@ -143,7 +188,7 @@ class MenuController extends Controller
         return $bmr;
     }
 
-    function cal($exercisebehavior, $bmr)
+    private function cal($exercisebehavior, $bmr)
     {
         $calories = 0;
         if($exercisebehavior == "1"){

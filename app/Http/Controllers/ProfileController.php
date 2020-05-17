@@ -28,27 +28,32 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        // get all the blogs
-        //$profile = $profile->get(['firstname','lastname']); 
+        //เป็นการหา id user ของแต่ละคน
         $person = Auth::user();
         $profile = Profile::where('user_id', $person->id)->first();
-        $profile = Profile::all()->sortByDesc('created_at');   
+          
         
+        Log::info('$profile : '.$profile);
+        
+        //คำนวณค่า BMR
         $bmr = 0;
-        if ($profile[0]->gender_id == "1") {
-            $bmr = 66 + (13.7 * $profile[0]->weight) + (5 * $profile[0]->height) - (6.8 * $profile[0]->age);
+        if ($profile->gender_id == "1") {
+            $bmr = 66 + (13.7 * $profile->weight) + (5 * $profile->height) - (6.8 * $profile->age);
         }
-        if ($profile[0]->gender_id == "2") {
-            $bmr = 665 + (9.6 * $request[0]->weight) + (1.8 * $request[0]->height) - (4.7 * $profile[0]->age);
+        if ($profile->gender_id == "2") {
+            $bmr = 665 + (9.6 * $profile->weight) + (1.8 * $profile->height) - (4.7 * $profile->age);
         }
 
-        $callories = $this->cal($profile[0]->exercisebehavior->id,$bmr);
-        $profile->bmr = $callories;
+        //คำนวณค่า calories จาก function cal
+        $callories = $this->cal($profile->exercisebehavior->id,$bmr);
+        Log::info('$callories : '.$callories);
 
-        // Log::info('$profile : '.$profile);
-        
-        //$calories = $this->cal($profile->exercisebehavior->id)
-        //Profile::user($bmr);
+        //เก็บตัวแปร bmr เพื่อแสดงค่า calories
+        $profile->setAttribute('bmr', $callories);
+
+
+        Log::info('$profile : '.$profile);
+        Log::info('$profile->bmr : '.$profile->bmr);
 		
         
         // load the view and pass the user
