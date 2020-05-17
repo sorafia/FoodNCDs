@@ -74,5 +74,3 @@ class RegisterController extends Controller
     }
 
     //protected $redirectTo = '/';
-
-}
