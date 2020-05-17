@@ -23,7 +23,7 @@
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
 						<h2>สร้างโปรไฟล์ของฉัน</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+						<p></p>
 					</div>
 					
 					<div class="row">
@@ -47,7 +47,7 @@
 										<div class="col-md-6">
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control" id="firstname" name="firstname" placeholder="ชื่อ" value="{{ $profile->firstname }}" required autofocus>
+													<input type="text" class="form-control" id="firstname" name="firstname" placeholder="ชื่อ" value="{{ $profile->firstname }}" >
 														@if ($errors->has('firstname'))
 															<span class="help-block">
 																<strong>{{ $errors->first('firstname') }}</strong>
@@ -60,7 +60,7 @@
 										<div class="col-md-6">	
 											<div class="col-md-12">
 												<div class="form-group">	
-													<input type="text" class="form-control" id="lastname" name="lastname" placeholder="นามสกุล" value="{{ $profile->lastname }}" required autofocus>
+													<input type="text" class="form-control" id="lastname" name="lastname" placeholder="นามสกุล" value="{{ $profile->lastname }}" >
 														@if ($errors->has('lastname'))
 															<span class="help-block">
 																<strong>{{ $errors->first('lastname') }}</strong>
@@ -77,19 +77,19 @@
 											<h3>ข้อมูลส่วนตัว</h3>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control" id="weight" name="weight" placeholder="น้ำหนัก" value="{{ $profile->weight }}" required autofocus>
+													<input type="text" class="form-control" id="weight" name="weight" placeholder="น้ำหนัก" value="{{ $profile->weight }}" >
 													<div class="help-block with-errors"></div>
 												</div>                                 
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control" id="้height" name="height" placeholder="ส่วนสูง" value="{{ $profile->height }}" required autofocus>
+													<input type="text" class="form-control" id="้height" name="height" placeholder="ส่วนสูง" value="{{ $profile->height }}" >
 													<div class="help-block with-errors"></div>
 												</div>                                 
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<select class="custom-select d-block form-control" name="gender_id" required autofocus>	
+													<select class="custom-select d-block form-control" name="gender_id" >	
 													<option value="">เพศ</option>
 													<option value="1" {{ $profile->gender_id == 1 ? 'selected' : '' }}>ชาย</option>
 													<option value="2" {{ $profile->gender_id == 2 ? 'selected' : '' }}>หญิง</option>
@@ -99,14 +99,14 @@
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control" id="้age" name="age" placeholder="อายุ" value="{{ $profile->age }}" required autofocus>
+													<input type="text" class="form-control" id="้age" name="age" placeholder="อายุ" value="{{ $profile->age }}" >
 													<div class="help-block with-errors"></div>
 												</div>                                 
 											</div>
 											<h3>ข้อมูลพฤติกรรมในการออกกำลังกาย</h3>
 											<div class="col-md-12">
 												<div class="form-group">
-													<select class="custom-select d-block form-control" name="exercisebehavior_id" required autofocus>
+													<select class="custom-select d-block form-control" name="exercisebehavior_id" >
 													<option value="">การออกกำลังกาย</option>
 													<option value="1" {{ $profile->exercisebehavior_id == 1 ? 'selected' : '' }}>น้อยมากหรือไม่ออกเลย</option>
 													<option value="2" {{ $profile->exercisebehavior_id == 2 ? 'selected' : '' }}>1-3 ครั้ง</option>

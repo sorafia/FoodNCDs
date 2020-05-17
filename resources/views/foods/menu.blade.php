@@ -83,7 +83,7 @@
                                     <label>Egg :</label>
 									<select class="custom-select d-block form-control" name="egg" required data-error="Please Select Person">
                                         <option disabled selected>This Menu " have or not have " Egg</option>
-									  <option value="้have">have</option>
+									  <option value="have">have</option>
 									  <option value="not have">not have</option>
 									</select>
 									<div class="help-block with-errors"></div>
@@ -95,7 +95,7 @@
                                     <label>Nuts :</label>
 									<select class="custom-select d-block form-control" name="nuts" required data-error="Please Select Person">
                                         <option disabled selected>This Menu " have or not have " Nuts</option>
-                                        <option value="้have">have</option>
+                                        <option value="have">have</option>
                                         <option value="not have">not have</option>
 									</select>
 									<div class="help-block with-errors"></div>
@@ -107,7 +107,7 @@
                                     <label>Peanuts :</label>
 									<select class="custom-select d-block form-control" name="peanuts" required data-error="Please Select Person">
                                         <option disabled selected>This Menu " have or not have " Peanuts</option>
-                                        <option value="้have">have</option>
+                                        <option value="have">have</option>
                                         <option value="not have">not have</option>
 									</select>
 									<div class="help-block with-errors"></div>
@@ -119,7 +119,7 @@
                                     <label>Soy :</label>
 									<select class="custom-select d-block form-control" name="soy" required data-error="Please Select Person">
                                         <option disabled selected>This Menu " have or not have " Soy</option>
-                                        <option value="้have">have</option>
+                                        <option value="have">have</option>
                                         <option value="not have">not have</option>
 									</select>
 									<div class="help-block with-errors"></div>
@@ -131,7 +131,7 @@
                                     <label>Shrimps :</label>
 									<select class="custom-select d-block form-control" name="shrimps" required data-error="Please Select Person">
                                         <option disabled selected>This Menu " have or not have " Shrimps</option>
-                                        <option value="้have">have</option>
+                                        <option value="have">have</option>
                                         <option value="not have">not have</option>
 									</select>
 									<div class="help-block with-errors"></div>
@@ -143,7 +143,7 @@
                                     <label>Crab :</label>
 									<select class="custom-select d-block form-control" name="crab" required data-error="Please Select Person">
                                         <option disabled selected>This Menu " have or not have " Crab</option>
-                                        <option value="้have">have</option>
+                                        <option value="have">have</option>
                                         <option value="not have">not have</option>
 									</select>
 									<div class="help-block with-errors"></div>
@@ -155,7 +155,7 @@
                                     <label>Fish :</label>
 									<select class="custom-select d-block form-control" name="fish" required data-error="Please Select Person">
                                         <option disabled selected>This Menu " have or not have " Fish</option>
-                                        <option value="้have">have</option>
+                                        <option value="have">have</option>
                                         <option value="not have">not have</option>
 									</select>
 									<div class="help-block with-errors"></div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddGenderIdToProfilesTable extends Migration
+class AddUserIdToProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,12 @@ class AddGenderIdToProfilesTable extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->integer('gender_id')->unsigned()->nullable();
-            $table->foreign('gender_id', 'profiles_gender_id_foreign')
+            $table->integer('user_id')->unsigned()->default(1);
+            $table->foreign('user_id', 'profiles_user_id_foreign')
                 ->references('id')
-                ->on('genders')
-                ->onDelete('cascade')
-                ->nullable();
-        });
+                ->on('users')
+                ->onDelete('cascade');
+            });
     }
 
     /**
@@ -31,8 +30,8 @@ class AddGenderIdToProfilesTable extends Migration
     public function down()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->dropForeign('profiles_gender_id_foreign');
-            $table->dropColumn('gender_id');
+            $table->dropForeign('profiles_user_id_foreign');
+            $table->dropColumn('user_id');
         });
     }
 }

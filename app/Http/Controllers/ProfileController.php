@@ -6,9 +6,21 @@ use Illuminate\Http\Request;
 use App\Ncd;
 use App\Profile;
 use App\Foodallergy;
+use Auth;
+use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -17,12 +29,55 @@ class ProfileController extends Controller
     public function index()
     {
         // get all the blogs
-        $profile = Profile::all()->sortByDesc('created_at');
+        //$profile = $profile->get(['firstname','lastname']); 
+        $person = Auth::user();
+        $profile = Profile::where('user_id', $person->id)->first();
+        $profile = Profile::all()->sortByDesc('created_at');   
+        
+        $bmr = 0;
+        if ($profile[0]->gender_id == "1") {
+            $bmr = 66 + (13.7 * $profile[0]->weight) + (5 * $profile[0]->height) - (6.8 * $profile[0]->age);
+        }
+        if ($profile[0]->gender_id == "2") {
+            $bmr = 665 + (9.6 * $request[0]->weight) + (1.8 * $request[0]->height) - (4.7 * $profile[0]->age);
+        }
+
+        $callories = $this->cal($profile[0]->exercisebehavior->id,$bmr);
+        $profile->bmr = $callories;
+
+        // Log::info('$profile : '.$profile);
+        
+        //$calories = $this->cal($profile->exercisebehavior->id)
+        //Profile::user($bmr);
 		
+        
         // load the view and pass the user
         return View('profile.index')
             ->with('profile', $profile);
+            
     }
+
+    public function cal($exercisebehavior, $bmr)
+    {
+        $calories = 0;
+        if($exercisebehavior == "1"){
+            $calories = $bmr * 1.2;
+        }
+        if($exercisebehavior == "2"){
+            $calories = $bmr * 1.375;
+        }
+        if($exercisebehavior == "3"){
+            $calories = $bmr * 1.55;
+        }
+        if($exercisebehavior == "4"){
+            $calories = $bmr * 1.7;
+        }
+        if($exercisebehavior == "5"){
+            $calories = $bmr * 1.9;
+        }
+        return $calories;
+    }
+   
 
     /**
      * Show the form for creating a new resource.
@@ -33,7 +88,8 @@ class ProfileController extends Controller
     {
         $ncd_list = Ncd::pluck('name', 'id');
         $foodallergy_list = Foodallergy::pluck('name', 'id');
-        return view('profile.create', compact('ncd_list','foodallergy_list'));
+        $bmr = Profile::pluck('weight', 'height', 'age', 'gender_id', 'exercisebehavior_id');
+        return view('profile.create', compact('ncd_list','foodallergy_list','bmr'));
     }
 
     /**
@@ -53,12 +109,12 @@ class ProfileController extends Controller
         ]);
     
         // store
-        $profile = new Profile;
-        $profile->firstname = $request->input('firstname');
-        $profile->lastname = $request->input('lastname');
-        $profile->age = $request->input('age');
-        $profile->height = $request->input('height');
-        $profile->weight = $request->input('weight');
+        $profile = auth()->user()->Profile()->create($request->all());
+        // $profile->firstname = $request->input('firstname');
+        // $profile->lastname = $request->input('lastname');
+        // $profile->age = $request->input('age');
+        // $profile->height = $request->input('height');
+        // $profile->weight = $request->input('weight');
         $profile->gender_id = $request->input('gender_id');
         $profile->exercisebehavior_id = $request->input('exercisebehavior_id');
         $profile->save();
@@ -68,9 +124,18 @@ class ProfileController extends Controller
         $profile->foodallergy_id = $request->input('foodallergy_list');
         if(!empty($profile->foodallergy_id))
             $profile->foodallergies()->sync($profile->foodallergy_id);
+        // $profile->user_id = Auth::user()->id;
+        $bmr = 0;
+        if ($profile->gender_id == "1") {
+            $bmr = 66 + (13.7 * $request->weight) + (5 * $request->height) - (6.8 * $request->age);
+        }
+        if ($profile->gender_id == "2") {
+            $bmr = 665 + (9.6 * $request->weight) + (1.8 * $request->height) - (4.7 * $request->age);
+        }
 
         // redirect
-        return redirect('profile')->with('message', 'Successfully created profile!');
+        return redirect('profile')->with('message', 'Successfully created profile!')
+        ->with('bmr', $bmr);
     }
 
     /**
@@ -114,15 +179,16 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'firstname' => 'required|string',
-            'lastname' => 'required|string',
-            'age' => 'required|string',
-            'height' => 'required|string',
-            'weight' => 'required|string',
-        ]);
+        // $this->validate($request, [
+        //     'firstname' => 'required|string',
+        //     'lastname' => 'required|string',
+        //     'age' => 'required|string',
+        //     'height' => 'required|string',
+        //     'weight' => 'required|string',
+        // ]);
     
         // store
+        //$profile->user_id = Auth::user()->id;
         $profile = Profile::findOrFail($id);
         $profile->firstname = $request->input('firstname');
         $profile->lastname = $request->input('lastname');
@@ -138,6 +204,8 @@ class ProfileController extends Controller
         $profile->foodallergy_id = $request->input('foodallergy_list');
         if(!empty($profile->foodallergy_id))
             $profile->foodallergies()->sync($profile->foodallergy_id);
+        // $profile->user_id = Auth::user()->id;
+        //$thread = auth()->user()->threads()->create($request->all());
 
         // redirect
         return redirect('profile')->with('message', 'Successfully updated profile!');

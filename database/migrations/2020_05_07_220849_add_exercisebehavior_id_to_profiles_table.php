@@ -14,11 +14,12 @@ class AddExercisebehaviorIdToProfilesTable extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->integer('exercisebehavior_id')->unsigned()->default(1);
+            $table->integer('exercisebehavior_id')->unsigned()->nullable();
             $table->foreign('exercisebehavior_id', 'profiles_exercisebehavior_id_foreign')
                 ->references('id')
                 ->on('exercisebehaviors')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->nullable();
         });
     }
 

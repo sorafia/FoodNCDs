@@ -32,7 +32,7 @@
         <div class="raw">
 			    <div class="row page-header">
 			        <div class="col-xs-12 col-md-6 col-lg-6">
-				        <h1 style = "margin-top: 30px;"> Profile(สำหรับ ADMIN) </h1>
+				        <h1 style = "margin-top: 30px;">  </h1>
 			        </div>
                     <div class="col-xs-12 col-md-6 col-lg-6">
                         <a href="{{ URL('/profile/create') }}" class="btn btn-default pull-right" style = "margin-top: 30px;"><i class="fa fa-plus"></i> Create Profile</a>
@@ -41,9 +41,9 @@
 			     <!-- /.row -->
 			 
                     <!-- will be used to show any messages -->
-                    @if (Session::has('message'))
+                    <!-- @if (Session::has('message'))
                         <div class="alert alert-success">{{ Session::get('message') }}</div>
-                    @endif
+                    @endif -->
                     
                     @foreach($profile as $key => $value)
 
@@ -58,11 +58,19 @@
                         
                             <div class="w3-container">
                                 <br>
+                                    
+									
                                     <header class="w3-container w3-lime">
-                                        <h3><i class="fa fa-line-chart"></i> ปริมาณแคลอรี่ที่เหมาะสม/วัน : 2100 กิโลแคลอรี่</h3>
-                                    </header>
+                                    <h3><i class="fa fa-line-chart"></i> ปริมาณแคลอรี่ที่เหมาะสม/วัน : {{ $profile->bmr }} กิโลแคลอรี่</h3>
+									</header>
+                                    
+                                    
                                 <br>
+                                @if($value->gender_id == null)
+                                    <p>เพศ : </p>
+                                @else
                                     <p>เพศ : {{ $value->gender->name }}</p>
+                                @endif
                                     <p>อายุ : {{ $value->age }} ปี</p>
                                     <p>น้ำหนัก : {{ $value->weight }} กิโลกรัม</p>
                                     <p>ส่วนสูง : {{ $value->height }} เซนติเมตร</p>

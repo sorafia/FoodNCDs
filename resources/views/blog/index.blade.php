@@ -88,7 +88,7 @@
             </div>
                 
 
-            <div class="raw">
+            <!-- <div class="raw">
 			    <div class="row page-header">
 			        <div class="col-xs-12 col-md-6 col-lg-6">
 				        <h1 style = "margin-top: 30px;"> Blogs(สำหรับ ADMIN) </h1>
@@ -100,7 +100,7 @@
 			     <!-- /.row -->
 			 
                     <!-- will be used to show any messages -->
-                    @if (Session::has('message'))
+        <!--            @if (Session::has('message'))
                         <div class="alert alert-success">{{ Session::get('message') }}</div>
                     @endif
                     <div class="table-responsive">
@@ -121,19 +121,19 @@
                                     <td>{{ $value->created_at }}</td>
                         
                                     <!-- we will also add show, edit, and delete buttons -->
-                                    <td>
+          <!--                          <td>
                         
                                         <!-- delete the nerd (uses the destroy method DESTROY /blogs/{id} -->
                                         <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                        <form class="form-horizontal" method="POST" action="{{ URL('blog/'.$value->id) }}">
+           <!--                             <form class="form-horizontal" method="POST" action="{{ URL('blog/'.$value->id) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             
                                         <!-- show the nerd (uses the show method found at GET /users/{id} -->
-                                        <a class="btn btn-xs btn-success" href="{{ URL::to('blog/' . $value->id) }}">Show</a>
+            <!--                            <a class="btn btn-xs btn-success" href="{{ URL::to('blog/' . $value->id) }}">Show</a>
                         
                                         <!-- edit this nerd (uses the edit method found at GET /users/{id}/edit -->
-                                        <a class="btn btn-xs btn-info" href="{{ URL::to('blog/' . $value->id . '/edit') }}">Edit</a>
+             <!--                           <a class="btn btn-xs btn-info" href="{{ URL::to('blog/' . $value->id . '/edit') }}">Edit</a>
                                         
                                         <button type="submit" class="btn btn-xs btn-danger">Delete</button>
                                         </form>
@@ -144,7 +144,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>

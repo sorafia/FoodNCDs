@@ -43,3 +43,19 @@ Route::get('/deletemenu/{id}', 'MenuController@delete');
 Route::get('/homepage','BlogController@firsthome')->name('homepage');
 Route::get('/profilepage','BlogController@profile');
 Route::get('/gallerypage','BlogController@gallery');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -34,6 +34,53 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    // /**
+    //  * The user repository implementation.
+    //  *
+    //  * @var UserRepository
+    //  */
+    // protected $users;
+
+    // /**
+    //  * Create a new controller instance.
+    //  *
+    //  * @param  UserRepository  $users
+    //  * @return void
+    //  */
+    // public static function boot()
+    // {
+    //     parent::boot(); 
+    
+    //     static::created(function ($user) {
+    //         $profile = Profile::create([
+    //             'firstname'=> $user('firstname'),
+    //             'lastname'=> $user('lastname'),
+    //             'age'=> $user('age'),
+    //             'height'=> $user('height'),
+    //             'weight'=> $user('weight'),
+    //             'gender_id'=> $user('gender_id'),
+    //             'exercisebehavior_id'=> $user('exercisebehavior_id'),
+    //             'user_id'=> auth()->id
+    //         ]); 
+    
+    //         $user->profile()->save($profile); 
+    //     }); 
+    // }
+    
+    // /**
+    //  * Show the profile for the given user.
+    //  *
+    //  * @param  int  $id
+    //  * @return Response
+    //  */
+    // public function show($id)
+    // {
+    //     $user = $this->users->find($id);
+
+    //     return view('profile.show', ['user' => $user]);
+    // }
+
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -42,6 +89,10 @@ class User extends Authenticatable
 
     public function role(){
         return $this->belongsTo('App\Role');
+    }
+
+    public function profile(){
+        return $this->hasOne('App\Profile');
     }
 
     protected $casts = [

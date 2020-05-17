@@ -71,6 +71,10 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'role_id' => 2,
         ]);
+        
+        
     }
 
     //protected $redirectTo = '/';
+
+}

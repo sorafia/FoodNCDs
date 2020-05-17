@@ -42,10 +42,13 @@
                     <div class="w3-container">
                         <br>
                             <header class="w3-container w3-lime">
-                                <h3><i class="fa fa-line-chart"></i> ปริมาณแคลอรี่ที่เหมาะสม/วัน : 2100 กิโลแคลอรี่</h3>
+                                <h3><i class="fa fa-line-chart"></i> ปริมาณแคลอรี่ที่เหมาะสม/วัน : 2100 กิโลแคลอรี่  {{ $bmr }}</h3>
                             </header>
                         <br>
-                            <p>เพศ : {{ $profile->gender->name }}</p>
+                            @if(empty($profile->gender_id))
+                            <p>เพศ : <p>
+                            @else   <p>เพศ : {{ $profile->gender->name }}</p>
+                            @endif
                             <p>อายุ : {{ $profile->age }} ปี</p>
                             <p>น้ำหนัก : {{ $profile->weight }} กิโลกรัม</p>
                             <p>ส่วนสูง : {{ $profile->height }} เซนติเมตร</p>
@@ -55,14 +58,16 @@
                                 <h3><i class="fa fa-plus-square"></i> โรคประจำตัวผู้ป่วย : </h3>
                             </header>
                         <br>
-                             @unless($profile->ncds->isEmpty())
+                                @if($profile->ncds->isEmpty())
+                                <p> ไม่มีโรคประจำตัว <p>
+                                @else
                                     <div>
                                         @foreach($profile->ncds as $ncd)
                                             {{--<span class="label label-default"> {{ $ncd->name }} </span> &nbsp--}}
                                             <p> {{ $ncd->name }} <p>
                                         @endforeach
                                     </div>
-                                @endunless
+                                @endif
                              
                     
                         <hr>
@@ -70,18 +75,23 @@
                                  <h3><i class="fa fa-exclamation-triangle"></i> การแพ้อาหาร : </h3>
                             </header>
                          <br>
-                            @unless($profile->fooballergies->isEmpty())
+                                    @if($profile->ncds->isEmpty())
+                                    <p> ไม่มีอาหารที่แพ้ <p>
+                                    @else
                                             <div>
                                                 @foreach($profile->foodallergies as $foodallergy)                                                    
                                                     <p> {{ $foodallergy->name }} <p>
                                                 @endforeach
                                             </div>
-                                        @endunless
-                            <p>กุ้ง</p>
+                                    @endif
 
                         </div>
-   
-                        <a class="w3-button w3-block w3-dark-grey" href="{{ URL::to('profile/{id}/edit') }}"><i class="fa fa-edit"></i> แก้ไขข้อมูลส่วนตัว</a>
+
+                        <form class="form-horizontal" method="POST" action="{{ URL('profile/'.$profile->id) }}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                        <a class="w3-button w3-block w3-dark-grey" href="{{ URL::to('profile/' . $profile->id . '/edit') }}"><i class="fa fa-edit"></i> แก้ไขข้อมูลส่วนตัว</a>
+                        </form>
                         
                 </div>
                 <br>

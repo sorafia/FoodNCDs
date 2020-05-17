@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Menu;
+use Auth;
+use App\Profile;
+use App\Foodallergy;
+use App\Foodallergy_Profile;
+use App\Ncd_Profile;
+use Log;
 
 class MenuController extends Controller
 {
@@ -19,8 +25,143 @@ class MenuController extends Controller
 
     public function display()
     {
-        $menus = Menu::all();
-        return view('foods.menuform')->with('menus', $menus);
+        $menus = Menu::all();       
+        
+
+
+        $person = Auth::user();
+        $profile = Profile::where('user_id', $person->id)->first();
+        $bmr = $this->calculate($profile->weight, $profile->height, $profile->age, $profile->gender->id);
+        Log::info('$profile : '.$profile);
+
+
+
+        $foodallergy_profile = Foodallergy_Profile::where('profile_id', $profile->id)->get();
+        Log::info('$foodallergy_profile : '.$foodallergy_profile);
+
+        //filter foodlergy
+        $foodWithOutFoodlergy= [];
+        for ($i = 0; $i < count($menus); $i++) {
+            Log::info('listmenu : '.$menus[$i]);
+
+            if( ($foodallergy_profile->foodallergy_id = 1 && $menus[$i]->egg == 'not have') ||
+                ($foodallergy_profile->foodallergy_id = 2 && $menus[$i]->nuts == 'not have') ||
+                ($foodallergy_profile->foodallergy_id = 3 && $menus[$i]->peanuts == 'not have') ||
+                ($foodallergy_profile->foodallergy_id = 4 && $menus[$i]->soy == 'not have') ||
+                ($foodallergy_profile->foodallergy_id = 5 && $menus[$i]->shrimps == 'not have') ||
+                ($foodallergy_profile->foodallergy_id = 6 && $menus[$i]->crab == 'not have') || 
+                ($foodallergy_profile->foodallergy_id = 7 && $menus[$i]->fish == 'not have') ){
+                array_push($foodWithOutFoodlergy, $menus[$i]);
+            }
+        }
+
+        for ($i = 0; $i < count($foodWithOutFoodlergy); $i++) {
+            Log::info('$foodWithOutFoodlergy : '.$foodWithOutFoodlergy[$i]);
+        }
+
+
+        //cal Nutrients
+
+        $ncd_profile = Ncd_Profile::where('profile_id', $profile->id)->get();
+        $protein = 0;
+        $carb = 0;
+        $lipid = 0;
+        $sodium = 0;
+        for ($i = 0; $i < count($ncd_profile); $i++) {
+            Log::info('$ncd_profile: '.$ncd_profile[$i]);
+
+            if($ncd_profile[$i]->ncd_id = 1){
+                // $protein = 15 /100 * $bmr;
+                // $carb = 60 /100 * $bmr;
+                // $lipid = 30 /100 * $bmr;
+                // $sodium = 
+            }
+
+            if($ncd_profile[$i]->ncd_id = 2){
+                // $protein = 15 /100 * $bmr;
+                // $carb = 60 /100 * $bmr;
+                // $lipid= 30 /100 * $bmr;
+            }
+
+            if($ncd_profile[$i]->ncd_id = 5){
+                $protein = 15 /100 * $bmr;
+                $carb = 60 /100 * $bmr;
+                $lipid= 30 /100 * $bmr;
+            }
+        }
+
+        $displaymenu = [];
+        $sumprotein = 0.0;
+        $sumcarb = 0.0;
+        $sumlipid = 0.0;
+        $sumsodium = 0.0;
+        shuffle($foodWithOutFoodlergy);
+        for ($i = 0; $i < 3; $i++) {
+            $sumprotein+=$foodWithOutFoodlergy[$i]->protein;
+            array_push($displaymenu, $foodWithOutFoodlergy[$i]);
+        }
+        Log::info('$sumprotein : '.$sumprotein);
+        Log::info('$protein : '.$protein);
+
+
+        
+        while($sumprotein > $protein && $sumcarb > $carb){
+        $sumprotein = 0.0;
+        $displaymenu = [];
+        shuffle($foodWithOutFoodlergy);
+        for ($i = 0; $i < 3; $i++) {
+            $sumprotein+=$foodWithOutFoodlergy[$i]->protein;
+            array_push($displaymenu, $foodWithOutFoodlergy[$i]);
+        }
+
+
+
+        }
+
+        for ($i = 0; $i < count($displaymenu); $i++) {
+            Log::info('$displaymenu : '.$displaymenu[$i]);
+        }
+
+
+
+        
+        //$calories = $this->cal($profile->exercisebehavior->id)
+        //Profile::bmr($bmr);
+        return view('foods.menuform')->with('menus', $displaymenu);
+    }
+    
+    private function calculate($weight, $height, $age, $gender)
+    {
+        //Log::info('gender ' . $gender);
+        $bmr = 0;
+        if ($gender == "1") {
+            $bmr = 66 + (13.7 * $weight) + (5 * $height) - (6.8 * $age);
+        }
+        if ($gender == "2") {
+            $bmr = 665 + (9.6 * $weight) + (1.8 * $height) - (4.7 * $age);
+        }
+        return $bmr;
+    }
+
+    function cal($exercisebehavior, $bmr)
+    {
+        $calories = 0;
+        if($exercisebehavior == "1"){
+            $calories = $bmr * 1.2;
+        }
+        if($exercisebehavior == "2"){
+            $calories = $bmr * 1.375;
+        }
+        if($exercisebehavior == "3"){
+            $calories = $bmr * 1.55;
+        }
+        if($exercisebehavior == "4"){
+            $calories = $bmr * 1.7;
+        }
+        if($exercisebehavior == "5"){
+            $calories = $bmr * 1.9;
+        }
+        return $calories;
     }
 
     public function nutrient()
