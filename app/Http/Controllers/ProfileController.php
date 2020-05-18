@@ -209,8 +209,6 @@ class ProfileController extends Controller
         $profile->foodallergy_id = $request->input('foodallergy_list');
         if(!empty($profile->foodallergy_id))
             $profile->foodallergies()->sync($profile->foodallergy_id);
-        // $profile->user_id = Auth::user()->id;
-        //$thread = auth()->user()->threads()->create($request->all());
 
         // redirect
         return redirect('profile')->with('message', 'Successfully updated profile!');

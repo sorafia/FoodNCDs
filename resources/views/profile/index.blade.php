@@ -30,14 +30,14 @@
         <!-- Start Profile -->
     
         <div class="raw">
-			    <div class="row page-header">
+			    <!-- <div class="row page-header">
 			        <div class="col-xs-12 col-md-6 col-lg-6">
 				        <h1 style = "margin-top: 30px;">  </h1>
 			        </div>
                     <div class="col-xs-12 col-md-6 col-lg-6">
                         <a href="{{ URL('/profile/create') }}" class="btn btn-default pull-right" style = "margin-top: 30px;"><i class="fa fa-plus"></i> Create Profile</a>
                     </div>
-			    </div>
+			    </div> -->
 			     <!-- /.row -->
 			 
                     <!-- will be used to show any messages -->
@@ -51,7 +51,7 @@
                     <div class="col-md-8 mr-auto ml-auto">
 
                         <br>
-                        <h3><i class="fa fa-user"></i>  ชื่อ - นามสกุล : {{ $profile->firstname }} {{ $profile->lastname }}</h3>
+                        <h3>&nbsp&nbsp&nbsp&nbsp<i class="fa fa-user"></i>  ชื่อ - นามสกุล : {{ $profile->firstname }} {{ $profile->lastname }}</h3>
                         <hr>
 
                         <div class="w3-card-4">
@@ -67,13 +67,13 @@
                                     
                                 <br>
                                 @if($profile->gender_id == null)
-                                    <p>เพศ : </p>
+                                    <p style="font-size: 20px;">เพศ : </p>
                                 @else
-                                    <p>เพศ : {{ $profile->gender->name }}</p>
+                                    <p style="font-size: 20px;">เพศ : {{ $profile->gender->name }}</p>
                                 @endif
-                                    <p>อายุ : {{ $profile->age }} ปี</p>
-                                    <p>น้ำหนัก : {{ $profile->weight }} กิโลกรัม</p>
-                                    <p>ส่วนสูง : {{ $profile->height }} เซนติเมตร</p>
+                                    <p style="font-size: 20px;">อายุ : {{ $profile->age }} ปี</p>
+                                    <p style="font-size: 20px;">น้ำหนัก : {{ $profile->weight }} กิโลกรัม</p>
+                                    <p style="font-size: 20px;">ส่วนสูง : {{ $profile->height }} เซนติเมตร</p>
                             
                                 <hr>
                                     <header class="w3-container w3-khaki">
@@ -83,7 +83,7 @@
                                 @unless($profile->ncds->isEmpty())
                                             <div>
                                                 @foreach($profile->ncds as $ncd)                                                    
-                                                    <p> {{ $ncd->name }} <p>
+                                                    <p style="font-size: 20px;"> {{ $ncd->name }} <p>
                                                 @endforeach
                                             </div>
                                         @endunless
@@ -97,7 +97,7 @@
                                 @unless($profile->foodallergies->isEmpty())
                                     <div>
                                         @foreach($profile->foodallergies as $foodallergy)
-                                            <p> {{ $foodallergy->name }} <p>
+                                            <p style="font-size: 20px;"> {{ $foodallergy->name }} <p>
                                         @endforeach
                                     </div>
                                 @endunless
@@ -111,12 +111,12 @@
                                         {{ method_field('DELETE') }}
                                         
                                     <!-- show the nerd (uses the show method found at GET /users/{id} -->
-                                    <a class="btn btn-xs btn-success" href="{{ URL::to('profile/' . $profile->id) }}">Show</a>
+                                    <!-- <a class="btn btn-xs btn-success" href="{{ URL::to('profile/' . $profile->id) }}">Show</a> -->
                     
                                     <!-- edit this nerd (uses the edit method found at GET /users/{id}/edit -->                            
                                     <a class="w3-button w3-block w3-dark-grey" href="{{ URL::to('profile/' . $profile->id . '/edit') }}"><i class="fa fa-edit"></i> แก้ไขข้อมูลส่วนตัว</a>                                        
                                     
-                                    <button type="submit" class="btn btn-xs btn-danger">Delete</button>
+                                    <!-- <button type="submit" class="btn btn-xs btn-danger">Delete</button> -->
                                 </form>                        
                                 
                         </div>

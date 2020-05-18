@@ -137,7 +137,7 @@ chart.render();
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
 						<h2>เมนูอาหารแนะนำ</h2>
-						<p>อาหารที่เหมาะสมกับคุณค่าทางโภชณาการและโรคประจำตัวของคุณ</p>
+						<p style="font-size: 18px;">อาหารที่เหมาะสมกับคุณค่าทางโภชนาการและโรคประจำตัวของคุณ</p>
 					</div>
 				</div>
 			</div>
@@ -145,10 +145,10 @@ chart.render();
 				<div class="col-lg-12">
 					<div class="special-menu text-center">
 						<div class="button-group filter-button-group">
-							<button class="active" data-filter="*">เมนูทั้งหมด</button>
-							<button data-filter=".breakfast">อาหารเช้า</button>
-							<button data-filter=".lunch">อาหารกลางวัน</button>
-							<button data-filter=".dinner">อาหารเย็น</button>
+							<button class="active" data-filter="*"style="font-size: 18px;" >เมนูทั้งหมด</button>
+							<button data-filter=".breakfast" style="font-size: 18px;">อาหารเช้า</button>
+							<button data-filter=".lunch" style="font-size: 18px;">อาหารกลางวัน</button>
+							<button data-filter=".dinner" style="font-size: 18px;">อาหารเย็น</button>
 						</div>
 					</div>
 				</div>

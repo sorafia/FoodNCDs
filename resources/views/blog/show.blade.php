@@ -20,7 +20,7 @@
   <div class="col-lg-8">
 
     <!-- Title -->
-    <h1 class="mt-4">{{ $blog->title }}</h1>
+    <h1 class="mt-4" style= "font-weight: bold;">{{ $blog->title }}</h1>
 
     <!-- Author -->
     <!-- <p class="lead">
@@ -44,14 +44,14 @@
     <!-- <p class="lead">{!! $blog->body !!}</p> -->
 
     <blockquote class="blockquote">
-      <p class="mb-0">{!! nl2br(e($blog->body)) !!}</p>
+      <p class="mb-0"style= "font-weight: 400;line-height: 30px;margin-bottom: .5rem;font-size: 22px; font-family: inherit;color: inherit;color: #010101">{!! nl2br(e($blog->body)) !!}</p>
     </blockquote>
 
-    <br><h3>สาเหตุ</h3>
-    <p class="lead">{!! nl2br(e($blog->cause)) !!}</p></br>
+    <br><h3 style= "font-size: 20px;font-weight: bold;font-size: 22px;">สาเหตุ</h3>
+    <p class="lead" style= "color: #212529;font-weight: 400;color: #010101;font-size: 1.3rem;">{!! nl2br(e($blog->cause)) !!}</p></br>
 
-    <br><h3>อาการ</h3>
-    <p class="lead">{!! nl2br(e($blog->symptom)) !!}</p></br>
+    <br><h3 style= "font-size: 20px;font-weight: bold;font-size: 22px;">อาการ</h3>
+    <p class="lead" style= "color: #212529;font-weight: 400;color: #010101;font-size: 1.3rem;">{!! nl2br(e($blog->symptom)) !!}</p></br>
 
     <!-- <blockquote class="blockquote">
       <p class="mb-0">{!! nl2br(e($blog->eat)) !!}</p>
@@ -60,8 +60,8 @@
       </footer>
     </blockquote> -->
 
-    <br><h3>อาหารที่เหมาะสม</h3>
-    <p class="lead">{!! nl2br(e($blog->eat)) !!}</p></br>
+    <br><h3 style= "font-size: 20px;font-weight: bold;font-size: 22px;">อาหารที่เหมาะสม</h3>
+    <p class="lead" style= "color: #212529;font-weight: 400;color: #010101;font-size: 1.3rem;">{!! nl2br(e($blog->eat)) !!}</p></br>
 
     <hr>
 

@@ -117,40 +117,40 @@ class MenuController extends Controller
         }     
 
 
-        //เช็ค sum ของสารอาหาร
-        while($sumprotein > $protein && $sumcarb > $carb && $sumlipid > $lipid && $sumsodium > $sodium){
-        $sumprotein = 0.0;
-        $sumcarbohydrate = 0.0;
-        $sumlipid = 0.0;
-        $sumsodium = 0.0;
-        $displaymenu = [];
-        shuffle($foodWithOutFoodlergy);
+        //เช็ค sum ของสารอาหารแล้วสุ่มเมนู
+        // while($sumprotein > $protein && $sumcarb > $carb && $sumlipid > $lipid && $sumsodium > $sodium){
+        // $sumprotein = 0.0;
+        // $sumcarbohydrate = 0.0;
+        // $sumlipid = 0.0;
+        // $sumsodium = 0.0;
+        // $displaymenu = [];
+        // shuffle($foodWithOutFoodlergy);
         
 
-        //เช็คว่ามีเมนูที่สามารถทานได้หรือไม่
-        if(count($foodWithOutFoodlergy) == 0 ){
-            $displaymenu = [];
-        }else if(count($foodWithOutFoodlergy) < 3 ){
-            for ($i = 0; $i < count($foodWithOutFoodlergy); $i++) {
-                $sumprotein+=$foodWithOutFoodlergy[$i]->protein;
-                $sumcarb+=$foodWithOutFoodlergy[$i]->carbohydrate;
-                $sumlipid+=$foodWithOutFoodlergy[$i]->lipid;
-                $sumsodium+=$foodWithOutFoodlergy[$i]->sodium;            
-                array_push($displaymenu, $foodWithOutFoodlergy[$i]);
-            }
-        }else{
+        //สุ่มเมนูไม่เกิน 3 เมนู
+        // if(count($foodWithOutFoodlergy) == 0 ){
+        //     $displaymenu = [];
+        // }else if(count($foodWithOutFoodlergy) < 3 ){
+        //     for ($i = 0; $i < count($foodWithOutFoodlergy); $i++) {
+        //         $sumprotein+=$foodWithOutFoodlergy[$i]->protein;
+        //         $sumcarb+=$foodWithOutFoodlergy[$i]->carbohydrate;
+        //         $sumlipid+=$foodWithOutFoodlergy[$i]->lipid;
+        //         $sumsodium+=$foodWithOutFoodlergy[$i]->sodium;            
+        //         array_push($displaymenu, $foodWithOutFoodlergy[$i]);
+        //     }
+        // }else{
 
-            for ($i = 0; $i < 3; $i++) {
-                $sumprotein+=$foodWithOutFoodlergy[$i]->protein;
-                $sumcarb+=$foodWithOutFoodlergy[$i]->carbohydrate;
-                $sumlipid+=$foodWithOutFoodlergy[$i]->lipid;
-                $sumsodium+=$foodWithOutFoodlergy[$i]->sodium;            
-                array_push($displaymenu, $foodWithOutFoodlergy[$i]);
-            }
+        //     for ($i = 0; $i < 3; $i++) {
+        //         $sumprotein+=$foodWithOutFoodlergy[$i]->protein;
+        //         $sumcarb+=$foodWithOutFoodlergy[$i]->carbohydrate;
+        //         $sumlipid+=$foodWithOutFoodlergy[$i]->lipid;
+        //         $sumsodium+=$foodWithOutFoodlergy[$i]->sodium;            
+        //         array_push($displaymenu, $foodWithOutFoodlergy[$i]);
+        //     }
 
-        }       
+        // }       
 
-        }
+        //}
 
         
 
@@ -172,7 +172,11 @@ class MenuController extends Controller
         
         //$calories = $this->cal($profile->exercisebehavior->id)
         //Profile::bmr($bmr);
-        return view('foods.menuform')->with('menus', $displaymenu);
+        return view('foods.menuform')->with('menus', $displaymenu)
+                                    ->with('sumprotein', $sumprotein)
+                                    ->with('sumcarb', $sumcarb)
+                                    ->with('sumlipid', $sumlipid)
+                                    ->with('sumsodium', $sumsodium);
     }
     
     private function calculate($weight, $height, $age, $gender)

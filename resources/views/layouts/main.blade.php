@@ -46,34 +46,33 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="{{ URL('/home') }}">หน้าแรก</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{ URL('/menupage') }}">อาหาร</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{ URL('/blog') }}">บทความ</a></li>												
-						<li class="nav-item"><a class="nav-link" href="{{ URL('/profile') }}">โปรไฟล์ของฉัน</a></li>						
+						<li class="nav-item active"><a class="nav-link" href="{{ URL('/home') }}" style="font-size: 22px;">หน้าแรก</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ URL('/menupage') }}" style="font-size: 22px;">อาหาร</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ URL('/blog') }}" style="font-size: 22px;">บทความ</a></li>												
+						<li class="nav-item"><a class="nav-link" href="{{ URL('/profile') }}" style="font-size: 22px;">โปรไฟล์ของฉัน</a></li>						
 										<!-- Authentication Links -->
 										{{--@if(Auth::check())--}}
 								@guest
 									<li class="nav-item">
-										<a class="nav-link" href="{{ url('/login') }}"><i class="fa fa-sign-in-alt"></i>  Login</a>
+										<a class="nav-link" href="{{ url('/login') }}" style="font-size: 22px;"><i class="fa fa-sign-in-alt"></i>  Login</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="{{ route('register') }}"><i class="fa fa-user-plus"></i> Register</a>
+										<a class="nav-link" href="{{ route('register') }}" style="font-size: 22px;" ><i class="fa fa-user-plus"></i> Register</a>
 									</li>
 
 								@else
 									<li class="nav-item dropdown">
-										<a href="#" class="nav-link  dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+										<a href="#" class="nav-link  dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style="font-size: 20px;">
 											<i class="fa fa-user"></i>
 											{{ Auth::user()->name }}
 											({{Auth::user()->role->name}})
-											{{--Teerapong--}}
 											<span class="caret"></span>
 										</a>
 
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<a class="dropdown-item" href=" route('logout') }} "
 											onclick="event.preventDefault();
-															document.getElementById('logout-form').submit();">
+															document.getElementById('logout-form').submit();" style="font-size: 22px;">
 												<i class="fa fa-sign-out-alt"></i> Logout
 											</a>
 

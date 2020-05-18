@@ -46,7 +46,7 @@
 										<div class="col-md-6">
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control" id="firstname" name="firstname" placeholder="ชื่อ" value="{{ old('firstname') }}" >
+													<input type="text" class="form-control" id="firstname" name="firstname" placeholder="ชื่อ" value="{{ old('firstname') }}" required data-error = "กรุณากรอกชื่อของท่าน">
 														@if ($errors->has('firstname'))
 															<span class="help-block">
 																<strong>{{ $errors->first('firstname') }}</strong>
@@ -59,7 +59,7 @@
 										<div class="col-md-6">	
 											<div class="col-md-12">
 												<div class="form-group">	
-													<input type="text" class="form-control" id="lastname" name="lastname" placeholder="นามสกุล" >
+													<input type="text" class="form-control" id="lastname" name="lastname" placeholder="นามสกุล" required data-error = "กรุณากรอกนามสกุลของท่าน">
 														@if ($errors->has('lastname'))
 															<span class="help-block">
 																<strong>{{ $errors->first('lastname') }}</strong>
@@ -76,19 +76,19 @@
 											<h3>ข้อมูลส่วนตัว</h3>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control" id="weight" name="weight" placeholder="น้ำหนัก" >
+													<input type="text" class="form-control" id="weight" name="weight" placeholder="น้ำหนัก" required data-error = "กรุณากรอกน้ำหนักของท่าน" >
 													<div class="help-block with-errors"></div>
 												</div>                                 
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control" id="้height" name="height" placeholder="ส่วนสูง" >
+													<input type="text" class="form-control" id="้height" name="height" placeholder="ส่วนสูง" required data-error = "กรุณากรอกส่วนสูงของท่าน">
 													<div class="help-block with-errors"></div>
 												</div>                                 
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<select class="custom-select d-block form-control" name="gender_id" >
+													<select class="custom-select d-block form-control" name="gender_id" required data-error = "กรุณาเลือกเพศของท่าน">
 													<option disabled selected>เพศ</option>
 													<option value="1">ชาย</option>
 													<option value="2">หญิง</option>
@@ -98,14 +98,14 @@
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control" id="้age" name="age" placeholder="อายุ" >
+													<input type="text" class="form-control" id="้age" name="age" placeholder="อายุ" required data-error = "กรุณากรอกอายุของท่าน">
 													<div class="help-block with-errors"></div>
 												</div>                                 
 											</div>
 											<h3>ข้อมูลพฤติกรรมในการออกกำลังกาย</h3>
 											<div class="col-md-12">
 												<div class="form-group">
-													<select class="custom-select d-block form-control" name="exercisebehavior_id" >
+													<select class="custom-select d-block form-control" name="exercisebehavior_id" required data-error = "กรุณาเลือกความถี่ในการออกกำลังกายของท่าน">
 													<option disabled selected>การออกกำลังกาย</option>
 													<option value="1">น้อยมากหรือไม่ออกเลย</option>
 													<option value="2">1-3 ครั้ง</option>

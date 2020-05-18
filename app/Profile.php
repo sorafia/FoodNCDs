@@ -44,7 +44,7 @@ class Profile extends Model
     }
 
     public function gender(){
-        return $this->belongsTo('App\Gender', 'gender_id');
+        return $this->belongsTo('App\Gender');
     }
 
     public function exercisebehavior(){
